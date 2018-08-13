@@ -1,5 +1,6 @@
 var express = require('express');
 const book = require('./src/book');
+const user = require('./src/users');
 
 var app = express();
 
@@ -13,6 +14,15 @@ app.get('/books/:id', function (req, res) {
     res.send(bookData);
 });
 
+//2.User API path
+app.get('/users', function (req, res) {
+    var usersdata = user.getUsersList();
+    res.send(usersdata);
+});
+app.get('/users/:id', function (req, res) {
+    var userdata = user.getUserByID(req.params.id);
+    res.send(userdata);
+});
 
 //Listen at port 3000
 const listen = function () {
