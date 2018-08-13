@@ -1,39 +1,16 @@
 var express = require('express');
- 
-let users = [{
-    "id": 100,
-    "userName": "Alex",
-    "userLName": "sol"
-    
-},
-{ 
-    "id": 200,
-    "userName": "Han",
-    "userLName": "Meles"
-}];  
+const book = require('./src/book');
 
 var app = express();
 
-
-//3. // API Path for user
-app.get('/users', function (req, res) {
-    res.send(users);
+// Book API path or route
+app.get('/books', function (req, res) {
+    var bookData = book.getBookList();
+    res.send(bookData);
 });
-
-app.get('/users/:id', function (req, res) {
-    var user;
-    //console.log(req.params);
-    for(var i=0; i< users.length; i++){
-        if(users[i].id == req.params.id){
-            user = users[i];
-            
-        }
-    }
-
-    if(!user){
-        res.send({message: 'The user is not existing in our system.'});
-    }
-    res.send(user);
+app.get('/books/:id', function (req, res) {
+    var bookData = book.getBookById(req.params.id);
+    res.send(bookData);
 });
 
 
