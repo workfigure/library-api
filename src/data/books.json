@@ -2,20 +2,20 @@
     {
         "id":"01",
         "title": "Introduction to math",
-        "description": "math science",
+        "description": "Math for computer science",
         "author": {
             "name": "kebede",
-            "address": "34"
+            "address": "Tacoma"
         },
         "publishedDate": "2/20/2011"
     },
     {
         "id":"02",
         "title": "Introduction to computer",
-        "description": "Compuster science",
+        "description": "Computer science and programming",
         "author": {
             "name": "abebe",
-            "address": "55"
+            "address": "Seattle"
         },
         "publishedDate": "2/3/2017"
     },
