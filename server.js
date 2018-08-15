@@ -1,8 +1,19 @@
 var express = require('express');
 const book = require('./src/book');
 const user = require('./src/users');
+const borrow = require('./src/borrow');
 
 var app = express();
+
+//borrow API or route
+app.get('/borrow', function (req, res) {
+    var borrowData = borrow.getborrowList();
+    res.send(borrowData);
+});
+app.get('/borrow/:id', function (req, res) {
+    var borrowData = borrow.getborrowByID(req.params.id);
+    res.send(borrowData);
+});
 
 // Book API path or route
 app.get('/books', function (req, res) {

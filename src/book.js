@@ -19,7 +19,7 @@ var getBookById = (bookId)=>{
 
 }
 */
-//returns a book with the given id 
+//Returns a book with the given id 
 function getBookById(bookId){
     var book; // should be initialized?
 
@@ -33,6 +33,17 @@ function getBookById(bookId){
         return {message: 'There is not book for the requested book id.'};
     }
     return book;
+}
+
+function getbookSearchByTitle(title){
+    var detailbook = [];
+    var j;
+    for(var i = 0; i < books.length; i++){
+        if(books[i].title == title){
+            detailbook[j] = books[i];
+            j++;
+        }
+    }
 }
  
 // module.exports is an object that the current module returns when it is "required" in another program or module.
