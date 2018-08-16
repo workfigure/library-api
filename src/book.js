@@ -39,16 +39,18 @@ function getbookSearchByTitle(title){
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
-        if(books[i].title == title){
-            detailbook[j] = books[i];
-            j++;
+        //if(books[i].title == title){ to check all the title name
+            if(books[i].title.includes(title) == true){
+            detailbook[i] = books[i]; 
         }
     }
+    return detailbook;
 }
  
 // module.exports is an object that the current module returns when it is "required" in another program or module.
 // it is like package 
 module.exports = {
     getBookList: getBookList, // you can assign any variable as key 
-    getBookById: getBookById
+    getBookById: getBookById,
+    getbookSearchByTitle: getbookSearchByTitle
 };
