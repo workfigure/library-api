@@ -25,6 +25,12 @@ app.get('/books/:id', function (req, res) {
     res.send(bookData);
 });
 
+// Search Books API
+app.get('/books/search/:title', function (req, res) {
+    var booksSearchData = book.getbookSearchByTitle(req.params.title);
+    res.send(booksSearchData);
+});
+
 //2.User API path
 app.get('/users', function (req, res) {
     var usersdata = user.getUsersList();

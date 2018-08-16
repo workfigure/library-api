@@ -1,7 +1,7 @@
 [
     {
         "id":"01",
-        "title": "Introduction to math",
+        "title": "physics",
         "description": "Math for computer science",
         "author": {
             "name": "kebede",
@@ -21,7 +21,7 @@
     },
     {
         "id":"03",
-        "title": "Introduction to physics",
+        "title": "physics is one of the computer science",
         "description": "physics",
         "author": {
             "name": "solomon",
