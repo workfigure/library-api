@@ -31,6 +31,16 @@ app.get('/books/search/:title', function (req, res) {
     res.send(booksSearchData);
 });
 
+app.get('/books/searchByFirstTitleName/:title', function (req, res) {
+    var booksSearchData = book.getbookSearchByFirstTitleName(req.params.title);
+    res.send(booksSearchData);
+});
+
+app.get('/books/searchByLastTitleName/:title', function (req, res) {
+    var booksSearchData = book.getbookSearchByLastTitleName(req.params.title);
+    res.send(booksSearchData);
+});
+
 //2.User API path
 app.get('/users', function (req, res) {
     var usersdata = user.getUsersList();

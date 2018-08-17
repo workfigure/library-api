@@ -1,8 +1,8 @@
 [
     {
         "id":"01",
-        "title": "physics",
-        "description": "Math for computer science",
+        "title": "physics computer",
+        "description": "Math for computer science Introduction",
         "author": {
             "name": "kebede",
             "address": "Tacoma"
@@ -21,7 +21,7 @@
     },
     {
         "id":"03",
-        "title": "physics is one of the computer science",
+        "title": "physics Introduction is one of the computer science",
         "description": "physics",
         "author": {
             "name": "solomon",
