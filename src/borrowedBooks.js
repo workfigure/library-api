@@ -22,19 +22,15 @@ function getBookIds(idObject){
     }
     return bookIds;
 }
-var idArray = getBookIds(idObject);
-function getBorrowedBookList(){ 
+function getBorrowedBookList(){
+    var listOfBookID = getBookIds(idObject);
     var borrowedBookList = [];
-    for (var i = 0; i < idArray.length; i++){
-        borrowedBookList.push (book.getBookById (idArray[i]));
+    for (var i = 0; i < listOfBookID.length; i++){
+        borrowedBookList.push (book.getBookById (listOfBookID[i]));
     }
     return borrowedBookList;
 }
-
  
-// module.exports is an object that the current module returns when it is "required" in another program or module.
-// it is like package 
 module.exports = {
-    //getBookIds: getBookIds, // you can assign any variable as key 
     getBorrowedBookList: getBorrowedBookList
 };
