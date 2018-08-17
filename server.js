@@ -32,12 +32,12 @@ app.get('/books/search/:title', function (req, res) {
 });
 
 app.get('/books/searchByFirstTitleName/:title', function (req, res) {
-    var booksSearchData = book.getbookSearchByFirstTitleName(req.params.title);
+    var booksSearchData = book.searchBookStartWithTitleName(req.params.title);
     res.send(booksSearchData);
 });
 
 app.get('/books/searchByLastTitleName/:title', function (req, res) {
-    var booksSearchData = book.getbookSearchByLastTitleName(req.params.title);
+    var booksSearchData = book.searchBookLastWithTitleName(req.params.title);
     res.send(booksSearchData);
 });
 

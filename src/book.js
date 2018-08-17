@@ -39,7 +39,6 @@ function getbookSearchByTitle(title){
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
-        //if(books[i].title == title){ to check all the title name
             if(books[i].title.includes(title) == true){
             detailbook[i] = books[i]; 
         }
@@ -47,11 +46,10 @@ function getbookSearchByTitle(title){
     return detailbook;
 }
  
-function getbookSearchByFirstTitleName(title){
+function searchBookStartWithTitleName(title){
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
-        //if(books[i].title == title){ to check all the title name
             if(books[i].title.startsWith(title) == true){
             detailbook[i] = books[i];
         }
@@ -59,11 +57,10 @@ function getbookSearchByFirstTitleName(title){
     return detailbook;
 }
 
-function getbookSearchByLastTitleName(title){
+function searchBookLastWithTitleName(title){
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
-        //if(books[i].title == title){ to check all the title name
             if(books[i].title.endsWith(title) == true){
             detailbook.push(books[i]);
         }
@@ -78,6 +75,6 @@ module.exports = {
     getBookList: getBookList, // you can assign any variable as key 
     getBookById: getBookById,
     getbookSearchByTitle: getbookSearchByTitle,
-    getbookSearchByFirstTitleName: getbookSearchByFirstTitleName,
-    getbookSearchByLastTitleName: getbookSearchByLastTitleName
+    searchBookStartWithTitleName: searchBookStartWithTitleName,
+    searchBookLastWithTitleName: searchBookLastWithTitleName
 };
