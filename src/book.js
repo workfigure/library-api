@@ -69,7 +69,7 @@ function searchBookByKeyWord(keyWord){
 
     }
     if (listOfBooks.length == 0){
-        return "There is no books associated with this keyword.";
+        return "There is no books associated with this key word.";
     }
     else{
         return listOfBooks;
