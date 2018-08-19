@@ -80,17 +80,43 @@ function getbookSearchByTitle(title){
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
-        //if(books[i].title == title){ to check all the title name
             if(books[i].title.includes(title) == true){
             detailbook[i] = books[i]; 
         }
     }
     return detailbook;
 }
- 
+
+function searchBookStartWithTitleName(title){
+    var detailbook = [];
+    var j;
+    for(var i = 0; i < books.length; i++){
+            if(books[i].title.startsWith(title) == true){
+            detailbook[i] = books[i];
+        }
+    }
+    return detailbook;
+}
+
+function searchBookLastWithTitleName(title){
+    var detailbook = [];
+    var j;
+    for(var i = 0; i < books.length; i++){
+            if(books[i].title.endsWith(title) == true){
+            detailbook.push(books[i]);
+        }
+    }
+    return detailbook;
+}
+
+// module.exports is an object that the current module returns when it is "required" in another program or module.
+// it is like package 
 module.exports = {
     getBookList: getBookList,  
     getBookById: getBookById,
+    getbookSearchByTitle: getbookSearchByTitle,
+    searchBookStartWithTitleName: searchBookStartWithTitleName,
+    searchBookLastWithTitleName: searchBookLastWithTitleName
     searchBookByAuthorID: searchBookByAuthorID,
     searchBookByKeyWord: searchBookByKeyWord,
     getbookSearchByTitle: getbookSearchByTitle
