@@ -19,7 +19,7 @@ var getBookById = (bookId)=>{
 
 }
 */
-//returns a book with the given id 
+//Returns a book with the given id 
 function getBookById(bookId){
     var book; // should be initialized?
 
@@ -34,7 +34,6 @@ function getBookById(bookId){
     }
     return book;
 }
-
 
 //search books by author ID 
 function searchBookByAuthorID(AuthorID){
@@ -77,11 +76,22 @@ function searchBookByKeyWord(keyWord){
     
 }
  
- 
+function getbookSearchByTitle(title){
+    var detailbook = [];
+    var j;
+    for(var i = 0; i < books.length; i++){
+        //if(books[i].title == title){ to check all the title name
+            if(books[i].title.includes(title) == true){
+            detailbook[i] = books[i]; 
+        }
+    }
+    return detailbook;
+}
  
 module.exports = {
     getBookList: getBookList,  
     getBookById: getBookById,
     searchBookByAuthorID: searchBookByAuthorID,
-    searchBookByKeyWord: searchBookByKeyWord
+    searchBookByKeyWord: searchBookByKeyWord,
+    getbookSearchByTitle: getbookSearchByTitle
 };

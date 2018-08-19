@@ -1,7 +1,7 @@
 var express = require('express');
 const book = require('./src/book');
 const user = require('./src/users');
-const borrBook = require('./src/borrowedBooks');
+const borrow = require('./src/borrow');
 
 var app = express();
 
@@ -13,6 +13,12 @@ app.get('/books', function (req, res) {
 app.get('/books/:id', function (req, res) {
     var bookData = book.getBookById(req.params.id);
     res.send(bookData);
+});
+
+// Search Books API
+app.get('/books/search/:title', function (req, res) {
+    var booksSearchData = book.getbookSearchByTitle(req.params.title);
+    res.send(booksSearchData);
 });
 
 //2.User API path
@@ -27,8 +33,18 @@ app.get('/users/:id', function (req, res) {
 
 //3. Borrowed books API path
 app.get('/borrowedBooks', function (req, res) {
-    var borrowData = borrBook.getBorrowedBookList();
+    var borrowData = borrow.getBorrowedBookList();
     res.send(borrowData)
+});
+
+//borrow API or route
+app.get('/borrow', function (req, res) {
+    var borrowData = borrow.getborrowList();
+    res.send(borrowData);
+});
+app.get('/borrow/:id', function (req, res) {
+    var borrowData = borrow.getborrowByID(req.params.id);
+    res.send(borrowData);
 });
 
 //4. searching books by author ID API path
