@@ -5,17 +5,7 @@ const borrow = require('./src/borrow');
 
 var app = express();
 
-//borrow API or route
-app.get('/borrow', function (req, res) {
-    var borrowData = borrow.getborrowList();
-    res.send(borrowData);
-});
-app.get('/borrow/:id', function (req, res) {
-    var borrowData = borrow.getborrowByID(req.params.id);
-    res.send(borrowData);
-});
-
-// Book API path or route
+//1. Book API path or route
 app.get('/books', function (req, res) {
     var bookData = book.getBookList();
     res.send(bookData);
@@ -48,6 +38,34 @@ app.get('/users', function (req, res) {
 });
 app.get('/users/:id', function (req, res) {
     var userdata = user.getUserByID(req.params.id);
+    res.send(userdata);
+});
+
+//3. Borrowed books API path
+app.get('/borrowedBooks', function (req, res) {
+    var borrowData = borrow.getBorrowedBookList();
+    res.send(borrowData)
+});
+
+//borrow API or route
+app.get('/borrow', function (req, res) {
+    var borrowData = borrow.getborrowList();
+    res.send(borrowData);
+});
+app.get('/borrow/:id', function (req, res) {
+    var borrowData = borrow.getborrowByID(req.params.id);
+    res.send(borrowData);
+});
+
+//4. searching books by author ID API path
+app.get('/searchByAuthorID/:id', function (req, res) {
+    var userdata = book.searchBookByAuthorID(req.params.id);
+    res.send(userdata);
+});
+
+//5.  searching books by key word API path
+app.get('/searchByKeyWord/:keyWord', function (req, res) {
+    var userdata = book.searchBookByKeyWord(req.params.keyWord);
     res.send(userdata);
 });
 
