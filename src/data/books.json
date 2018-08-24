@@ -1,6 +1,8 @@
 [
     {
-        "id":"01",
+        "ISBN": "0003",
+        "quantity": 1,
+        "id": "01",
         "title": "physics",
         "description": "Math for computer science",
         "author": {
@@ -10,7 +12,9 @@
         "publishedDate": "2/20/2011"
     },
     {
-        "id":"02",
+        "ISBN": "0004",
+        "quantity": 1,
+        "id": "02",
         "title": "Introduction to computer",
         "description": "Computer science and programming",
         "author": {
@@ -20,7 +24,9 @@
         "publishedDate": "2/3/2017"
     },
     {
-        "id":"03",
+        "ISBN": "0005",
+        "quantity": 1,
+        "id": "03",
         "title": "physics is one of the computer science",
         "description": "physics",
         "author": {
@@ -28,5 +34,53 @@
             "address": "66"
         },
         "publishedDate": "2/3/2014"
+    },
+    {
+        "ISBN": "0006",
+        "quantity": 1,
+        "title": "Enviromental science",
+        "description": "North america polution control",
+        "author": {
+            "name": "alex",
+            "address": "536638"
+        },
+        "publishedDate": "2/3/2017",
+        "id": "9eb98440-a341-11e8-b2e4-5372b18e95e6"
+    },
+    {
+        "ISBN": "0001",
+        "quantity": 1,
+        "title": "Enviromental science",
+        "description": "North america polution control",
+        "author": {
+            "name": "alex",
+            "address": "536638"
+        },
+        "publishedDate": "2/3/2017",
+        "id": "c6737fe0-a341-11e8-b2e4-5372b18e95e6"
+    },
+    {
+        "ISBN": "0002",
+        "quantity": 1,
+        "title": "Enviromental science",
+        "description": "North america polution control",
+        "author": {
+            "name": "alex",
+            "address": "536638"
+        },
+        "publishedDate": "2/3/2017",
+        "id": "e101fc60-a3d7-11e8-8ecc-3d928db23d9f"
+    },
+    {
+        "ISBN": "00011",
+        "quantity": 10,
+        "title": "Enviromental science",
+        "description": "North america polution control",
+        "author": {
+            "name": "alex",
+            "address": "536638"
+        },
+        "publishedDate": "2/3/2017",
+        "id": "1c244a50-a441-11e8-bc97-71ff1cd7575f"
     }
 ]

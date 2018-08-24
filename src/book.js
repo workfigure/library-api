@@ -1,8 +1,13 @@
 const fs = require('fs'); //like import 
 
 //1. Read data from json file (contains array type)
-let rawdata = fs.readFileSync('./src/data/books.json');  
-let books = JSON.parse(rawdata);  //returns js arrays
+const bookDataPath = './src/data/books.json';
+
+   //1. Read data from json file (contains array type)
+let bookRawdata =fs.readFileSync(bookDataPath);
+let books = JSON.parse(bookRawdata);
+
+
 
 //returns list of books 
 function getBookList(){
@@ -46,11 +51,40 @@ function getbookSearchByTitle(title){
     }
     return detailbook;
 }
+
+function saveBook(book){
+    let exist = false; // flage
+
+    //Validate the user is already exist or not.
+    for(let i=0; i< books.length; i++){
+        if(books[i].ISBN == book.ISBN){
+            exist = true;
+            books[i].quantity++;
+            fs.writeFileSync(bookDataPath, JSON.stringify(books));
+        }
+    }
+ 
+    if(exist == true){
+        return {
+            message: 'The book is already exist.'
+        };
+
+    }
+    
+    book.id = uuidv1();
+    books.push(book);
+    fs.writeFileSync(bookDataPath, JSON.stringify(books));
+
+    return {
+        message: 'The books is added successfuly.'
+    }; 
+}
  
 // module.exports is an object that the current module returns when it is "required" in another program or module.
 // it is like package 
 module.exports = {
     getBookList: getBookList, // you can assign any variable as key 
     getBookById: getBookById,
-    getbookSearchByTitle: getbookSearchByTitle
+    getbookSearchByTitle: getbookSearchByTitle,
+    saveBook: saveBook
 };

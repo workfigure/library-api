@@ -1,11 +1,13 @@
-[{
-    "id":100,
-    "userName": "Alex",
-    "userLName": "sol"
-    
-},
-{ 
-    "id":200,
-    "userName": "Han",
-    "userLName": "Meles"
-}]
+[
+    {
+        "userName": "ammanuel",
+        "userLName": "yes",
+        "address": {
+            "street": "1000 N 260 st",
+            "city": "shoreline",
+            "state": "WA",
+            "zipcode": "98133"
+        },
+        "id": "25373de0-a401-11e8-8361-915e26cd6116"
+    }
+]
