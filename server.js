@@ -1,18 +1,36 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 const book = require('./src/book');
 const user = require('./src/users');
 const borrow = require('./src/borrow');
+const util = require('util');
 
 var app = express();
+//app.use(bodyParser);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 //1. Book API path or route
 app.get('/books', function (req, res) {
     var bookData = book.getBookList();
     res.send(bookData);
 });
+
 app.get('/books/:id', function (req, res) {
     var bookData = book.getBookById(req.params.id);
     res.send(bookData);
+});
+
+
+app.post('/books', function (req, res) {
+    //book.saveBook(req.body);
+    res.send(book.saveBook(req.body));
+});
+
+app.post('/users', function (req, res) {
+    res.send(user.saveUser(req.body));
 });
 
 // Search Books API
