@@ -1,3 +1,4 @@
+const fs = require('fs'); //The keyword require is used in Node.js to import modules.
 
 const getData = (filePath)=>{
     //Read data from json file.
