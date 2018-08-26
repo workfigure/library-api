@@ -143,7 +143,7 @@ module.exports = {
     getbookSearchByTitle: getbookSearchByTitle,
     saveBook: saveBook,
     searchBookStartWithTitleName: searchBookStartWithTitleName,
-    searchBookLastWithTitleName: searchBookLastWithTitleName
+    searchBookLastWithTitleName: searchBookLastWithTitleName,
     searchBookByAuthorID: searchBookByAuthorID,
     searchBookByKeyWord: searchBookByKeyWord,
     getbookSearchByTitle: getbookSearchByTitle
