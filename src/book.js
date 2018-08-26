@@ -1,11 +1,9 @@
 const fs = require('fs'); //like import 
+const readfile = require('readfile');
 
 //1. Read data from json file (contains array type)
 const bookDataPath = './src/data/books.json';
-
-//1. Read data from json file (contains array type)
-let bookRawdata =fs.readFileSync(bookDataPath);
-let books = JSON.parse(bookRawdata);
+readfile.getData(bookDataPath);
 
 //returns list of books 
 function getBookList(){

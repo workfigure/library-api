@@ -1,14 +1,13 @@
 const fs = require('fs'); //The keyword require is used in Node.js to import modules.
+const readfile = require('readfile');
 
-//let userrawdata = fs.readFileSync('./src/data/users.json');  
-//let users = JSON.parse(userrawdata);
 const uuidv1 = require('uuid/v1');
 const userDataPath = './src/data/users.json';
 
    //1. Read data from json file (contains array type)
-let userRawdata =fs.readFileSync(userDataPath);
-let users = JSON.parse(userRawdata);   //returns js arrays  
-//console.log(users);
+let users = readfile.getData(userDataPath);
+
+
 
 function getUsersList(){
     return users
