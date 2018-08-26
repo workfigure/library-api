@@ -1,15 +1,18 @@
 const fs = require('fs');
+const readfile = require('readfile');
 
-let borrowrawdata = fs.readFileSync('./src/data/borrow.json');  
-let borrow = JSON.parse(borrowrawdata);
-let booksrawdata = fs.readFileSync('./src/data/books.json');  
-let books = JSON.parse(booksrawdata);  
-let usersrawdata = fs.readFileSync('./src/data/users.json');  
-let users = JSON.parse(usersrawdata);
+let borrow = readfile.getData('./src/data/borrow.json');  
+let books = readfile.getData('./src/data/books.json');
 
-function getborrowList(){
-    return borrow;
+function getBorrowedBookList(){
+    var listOfBookID = getBookIds(idObject);
+    var borrowedBookList = [];
+    for (var i = 0; i < listOfBookID.length; i++){
+        borrowedBookList.push (book.getBookById (listOfBookID[i]));
+    }
+    return borrowedBookList;
 }
+ 
 
 function getborrowByID(userID){
     var book = [];
