@@ -1,5 +1,5 @@
-const fs = require('fs');
-const readfile = require('readfile');
+
+const readfile = require('./helper/readfile');
 
 let borrow = readfile.getData('./src/data/borrow.json');  
 let books = readfile.getData('./src/data/books.json');

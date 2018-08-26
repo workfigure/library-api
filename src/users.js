@@ -1,5 +1,5 @@
 const fs = require('fs'); //The keyword require is used in Node.js to import modules.
-const readfile = require('readfile');
+const readfile = require('./helper/readfile');
 
 const uuidv1 = require('uuid/v1');
 const userDataPath = './src/data/users.json';

@@ -1,9 +1,10 @@
 const fs = require('fs'); //like import 
-const readfile = require('readfile');
+const readfile = require('./helper/readfile');
+const uuidv1 = require('uuid/v1');
 
 //1. Read data from json file (contains array type)
 const bookDataPath = './src/data/books.json';
-readfile.getData(bookDataPath);
+var books = readfile.getData(bookDataPath);
 
 //returns list of books 
 function getBookList(){
@@ -106,6 +107,10 @@ function saveBook(book){
     books.push(book);
     fs.writeFileSync(bookDataPath, JSON.stringify(books));
 
+    //reload the books
+    const readfile = require('./helper/readfile');
+    books = readfile.getData(bookDataPath);
+    
     return {
         message: 'The books is added successfuly.'
     }; 
