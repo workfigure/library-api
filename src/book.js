@@ -4,10 +4,11 @@ const uuidv1 = require('uuid/v1');
 
 //1. Read data from json file (contains array type)
 const bookDataPath = './src/data/books.json';
-var books = readfile.getData(bookDataPath);
+var books = [];
 
 //returns list of books 
 function getBookList(){
+    books = readfile.getData(bookDataPath);
     return books;
 }
 // 3 ways to define the function 
@@ -23,7 +24,8 @@ var getBookById = (bookId)=>{
 */
 //Returns a book with the given id 
 function getBookById(bookId){
-    var book; // should be initialized?
+    books = readfile.getData(bookDataPath);
+    var book; 
 
     for(var i=0; i< books.length; i++){
         if(books[i].id == bookId){
@@ -39,6 +41,7 @@ function getBookById(bookId){
 
 //search books by author ID 
 function searchBookByAuthorID(AuthorID){
+    books = readfile.getData(bookDataPath);
     var booksByAuthor = [];
     for(var i = 0; i < books.length; i++){
         if (AuthorID == books[i].author.id){
@@ -47,7 +50,7 @@ function searchBookByAuthorID(AuthorID){
 
     }
     if (booksByAuthor.length == 0){
-        return "The author ID provided is not in the file.";
+        return "Empty file or there is no book associated with provided author ID.";
     }
     else{
         return booksByAuthor;
@@ -57,6 +60,7 @@ function searchBookByAuthorID(AuthorID){
 
 //search books by keyword 
 function searchBookByKeyWord(keyWord){
+    books = readfile.getData(bookDataPath);
     var listOfBooks = [];
     for(var i = 0; i < books.length; i++){
         if (books[i].title.search(keyWord) != -1 || books[i].description.search(keyWord) != -1){
@@ -65,7 +69,7 @@ function searchBookByKeyWord(keyWord){
 
     }
     if (listOfBooks.length == 0){
-        return "There is no books associated with this key word.";
+        return "There is no books associated with the keyword.";
     }
     else{
         return listOfBooks;
@@ -74,6 +78,7 @@ function searchBookByKeyWord(keyWord){
 }
  
 function getbookSearchByTitle(title){
+    books = readfile.getData(bookDataPath);
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
@@ -85,6 +90,7 @@ function getbookSearchByTitle(title){
 }
 
 function saveBook(book){
+    books = readfile.getData(bookDataPath);
     let exist = false; // flage
 
     //Validate the user is already exist or not.
@@ -112,11 +118,12 @@ function saveBook(book){
     books = readfile.getData(bookDataPath);
     
     return {
-        message: 'The books is added successfuly.'
+        message: 'The book is added successfuly.'
     }; 
 }
  
 function searchBookStartWithTitleName(title){
+    books = readfile.getData(bookDataPath);
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
@@ -128,6 +135,7 @@ function searchBookStartWithTitleName(title){
 }
 
 function searchBookLastWithTitleName(title){
+    books = readfile.getData(bookDataPath);
     var detailbook = [];
     var j;
     for(var i = 0; i < books.length; i++){
