@@ -1,45 +1,6 @@
 const fs = require('../../src/helper/readfile');
 const expect = require('chai').expect;
 
-xdescribe('user module', ()=>{
-    it('Add a New User in the system', ()=>{
-        var newuser =
-            {
-                "userName": "sewhab",
-                "userLName": "Hunegnaw",
-                "address": {
-                    "street": "1000 N 260 st",
-                    "city": "shoreline",
-                    "state": "WA",
-                    "zipcode": "98133"
-                },
-            };
-            var num = user.getUsersList();
-            const numUser = num.length;
-            user.saveUser(newuser);
-            var adduser = user.getUsersList();
-            const addusernum = adduser.length;
-            if(numUser != addusernum){
-                expect(addusernum).to.deep.equal(numUser + 1);
-            }
-    });
-
-    it('Null Value',()=>{
-        var nullValue = null;
-        var objUser = user.getUsersList();
-        //const numUser = num.length;
-        user.saveUser(nullValue);
-        var objeUser1 = user.getUsersList();
-        //const addusernum = adduser.length;
-        expect(objUser).to.equal(objeUser1);
-    });
-
-    it('include',()=>{
-        var objUser = user.getUsersList();
-        expect(objUser).to.deep.include(user);
-    });
-});
-
 describe('user module', ()=>{
     describe('Read user module ', ()=>{
         it('should retrive no user when there is no regeisted user.', async ()=>{
