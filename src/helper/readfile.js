@@ -3,9 +3,16 @@ const fs = require('fs'); //The keyword require is used in Node.js to import mod
 const getData = (filePath)=>{
     //Read data from json file.
     let rawData = fs.readFileSync(filePath);
-    let dataJson = JSON.parse(rawData);
+    
+    if(rawData.length == 0){
+        return [];
+    }
+  
+    return JSON.parse(rawData);
+}
 
-    return dataJson;
+const writeData = async (filePath, data)=>{
+    await fs.writeFileSync(filePath, JSON.stringify(data));
 }
 
 const writeData = (filePath, data)=>{

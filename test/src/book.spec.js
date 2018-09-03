@@ -4,30 +4,6 @@ var assert = require('assert');
 const bookDataPath = './src/data/books.json';
 const fs = require('../../src/helper/readfile');
 
-xdescribe('Book', ()=>{
-    it('should add a new book', ()=>{
-        var bookData =     {
-            "ISBN": "00017",
-            "quantity": 1,
-            "id": "21",
-            "title": "Testing software",
-            "author": {
-                "id": "30",
-                "name": "Kebede",
-                "address": "SeaTac"
-            },
-            "publishedDate": "2/20/2010"
-        };
-
-        var allbook = book.getBookList();
-        const initialBookCount = allbook.length;
-        book.saveBook(bookData);
-        allbook = book.getBookList();
-        const latestBookCount = allbook.length;
-
-        expect(latestBookCount).to.equal(initialBookCount + 1);
-    });
-    
 });
 
 describe('Book module', ()=>{
