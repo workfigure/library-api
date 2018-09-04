@@ -86,6 +86,16 @@ app.get('/searchByKeyWord/:keyWord', function (req, res) {
     var userdata = book.searchBookByKeyWord(req.params.keyWord);
     res.send(userdata);
 });
+//6. Add book borrowing data
+app.post('/borrowBook', function (req, res) {
+    //console.log(util.inspect(req));
+    borrow.saveBorrowedBook(req.body);
+    let message = {
+        message: 'The book borrowing data added successfuly.'
+    };
+
+    res.send(message);
+});
 
 //Listen at port 3000
 const listen = function () {

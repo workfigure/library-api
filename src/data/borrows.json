@@ -1,11 +1,10 @@
 [
     {
-        "id": "100",
-        "booksBorrowed":["01","02"]  
+        "userId": "100",
+        "bookId": ["01", "02"]
     },
     {
-        "id": "101", 
-        "userName": "Kebede",
-        "booksBorrowed": ["01"] 
-    }
+        "userId": "103",
+        "bookId": ["01", "02"]
+    }   
 ]
