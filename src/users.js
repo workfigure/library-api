@@ -7,22 +7,29 @@ const userDataPath = './src/data/users.json';
    //1. Read data from json file (contains array type)
 let users = readfile.getData(userDataPath);
 
-
-
 function getUsersList(){
-    return users
+    let users = readfile.getData(userDataPath);
+    return users;
 }
 function getUserByID(userID){
+    let users = readfile.getData(userDataPath);
     var user;
     for(var i=0; i< users.length; i++){
-        if(users[i].id !== userID){
+        if(users[i].id == userID){
             user = users[i];
         }
     }
     return user;
 }
+
 function saveUser(user){
+    let users = readfile.getData(userDataPath);
     let exist = false; // flage
+    if (!user || typeof user !== 'object' || !user.userName || !user.userLName){
+        return {
+            message: 'The data should be object and have the required fields.'
+        };
+    }
 
     //Validate the user is already exist or not.
     for(let i=0; i< users.length; i++){
@@ -37,7 +44,6 @@ function saveUser(user){
         return {
             message: 'The user is already exist.'
         };
-
     }
     
     user.id = uuidv1();
@@ -45,9 +51,10 @@ function saveUser(user){
     fs.writeFileSync(userDataPath, JSON.stringify(users))
 
     return {
-        message: 'The user is added successfuly.'
+        id: user.id
     }; 
 }
+
 //publicly available methods
 module.exports = {
     getUsersList: getUsersList,
