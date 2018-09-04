@@ -91,7 +91,7 @@ function getbookSearchByTitle(title){
 
 function saveBook(book){
     books = readfile.getData(bookDataPath);
-    let exist = false; // flage
+    let exist = false; // flag
 
     //Validate the user is already exist or not.
     for(let i=0; i< books.length; i++){
@@ -145,6 +145,7 @@ function searchBookLastWithTitleName(title){
     }
     return detailbook;
 }
+    
 
 // module.exports is an object that the current module returns when it is "required" in another program or module.
 // it is like package 
