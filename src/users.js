@@ -24,7 +24,7 @@ function getUserByID(userID){
 
 function saveUser(user){
     let users = readfile.getData(userDataPath);
-    let exist = false; // flage
+    let exist = false; // flag
     if (!user || typeof user !== 'object' || !user.userName || !user.userLName){
         return {
             message: 'The data should be object and have the required fields.'
