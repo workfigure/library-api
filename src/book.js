@@ -91,6 +91,13 @@ function getbookSearchByTitle(title){
 
 function saveBook(book){
     books = readfile.getData(bookDataPath);
+    if (book == null || book == {} || !book || typeof book !== 'object' || !book.ISBN){
+        return {
+            message: 'The data should be object and have the required book fields.'
+        };
+
+    }
+    
     let exist = false; // flag
 
     //Validate the user is already exist or not.
@@ -104,7 +111,7 @@ function saveBook(book){
  
     if(exist == true){
         return {
-            message: 'The book is already exist.'
+            message: 'The book already exists.'
         };
 
     }
@@ -112,10 +119,6 @@ function saveBook(book){
     book.id = uuidv1();
     books.push(book);
     fs.writeFileSync(bookDataPath, JSON.stringify(books));
-
-    //reload the books
-    const readfile = require('./helper/readfile');
-    books = readfile.getData(bookDataPath);
     
     return {
         message: 'The book is added successfuly.'
