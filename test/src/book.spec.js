@@ -4,8 +4,6 @@ var assert = require('assert');
 const bookDataPath = './src/data/books.json';
 const fs = require('../../src/helper/readfile');
 
-});
-
 describe('Book module', ()=>{
     describe('read functionality', ()=>{
         it('should return empty list if there is not book in the library.', ()=>{

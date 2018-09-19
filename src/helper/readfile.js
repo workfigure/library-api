@@ -15,10 +15,6 @@ const writeData = async (filePath, data)=>{
     await fs.writeFileSync(filePath, JSON.stringify(data));
 }
 
-const writeData = (filePath, data)=>{
-    fs.writeFileSync(filePath, JSON.stringify(data));
-}
-
 module.exports = {
     getData: getData,
     writeData: writeData

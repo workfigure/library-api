@@ -22,7 +22,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/**/user.spec.js"
+                "${workspaceFolder}/test/**/*borrow.spec.js"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },

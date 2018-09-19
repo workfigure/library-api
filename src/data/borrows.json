@@ -1,11 +1,1 @@
-[
-    {
-        "id": "100",
-        "booksBorrowed":["01","02"]  
-    },
-    {
-        "id": "101", 
-        "userName": "Kebede",
-        "booksBorrowed": ["01"] 
-    }
-]
+[{"bookIds":["21c1be70-bc24-11e8-91b0-f1d16e96e09d","21c20c90-bc24-11e8-91b0-f1d16e96e09d"],"userId":"21c17050-bc24-11e8-91b0-f1d16e96e09d"}]

@@ -112,13 +112,10 @@ function saveBook(book){
     book.id = uuidv1();
     books.push(book);
     fs.writeFileSync(bookDataPath, JSON.stringify(books));
-
-    //reload the books
-    const readfile = require('./helper/readfile');
-    books = readfile.getData(bookDataPath);
+    console.log(book.id);
     
     return {
-        message: 'The book is added successfuly.'
+        id: book.id
     }; 
 }
  
