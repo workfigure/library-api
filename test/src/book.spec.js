@@ -5,8 +5,6 @@ const bookDataPath = './src/data/books.json';
 const borrowDataPath = '../../src/data/borrows.json';
 const fs = require('../../src/helper/readfile');
 
-
-
 describe('Book module', ()=>{
     describe('read functionality', ()=>{
         it('should return empty list if there is not book in the library.', ()=>{
@@ -22,6 +20,7 @@ describe('Book module', ()=>{
             // 1. Prepare the data.
             fs.writeData(bookDataPath, [
                 {
+                  
                     "ISBN": "0003",
                     "quantity": 1,
                     "id": "01",

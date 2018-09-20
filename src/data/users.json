@@ -1,13 +1,1 @@
-[
-    {
-        "userName": "ammanuel",
-        "userLName": "yes",
-        "address": {
-            "street": "1000 N 260 st",
-            "city": "shoreline",
-            "state": "WA",
-            "zipcode": "98133"
-        },
-        "id": "100"
-    }
-]
+[{"userName":"checkout","userLName":"Hunegnaw","address":{"street":"1000 N 260 st","city":"shoreline","state":"WA","zipcode":"98133"},"id":"21c17050-bc24-11e8-91b0-f1d16e96e09d"},{"userName":"Trycheckout","userLName":"Hunegnaw","address":{"street":"1000 N 260 st","city":"shoreline","state":"WA","zipcode":"98133"},"id":"21c19760-bc24-11e8-91b0-f1d16e96e09d"}]

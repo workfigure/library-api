@@ -121,7 +121,7 @@ function saveBook(book){
     fs.writeFileSync(bookDataPath, JSON.stringify(books));
     
     return {
-        message: 'The book is added successfuly.'
+        id: book.id
     }; 
 }
  

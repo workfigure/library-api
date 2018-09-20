@@ -1,4 +1,5 @@
 
+const fs = require('fs'); //The keyword require is used in Node.js to import modules.
 const readfile = require('./helper/readfile');
 
 const userDataPath = './src/data/users.json';
@@ -9,7 +10,6 @@ let borrow = readfile.getData(borrowDataPath);
 let books = readfile.getData(bookDataPath);
 let users = readfile.getData(userDataPath);
 
-
 function getBorrowedBookList(){ 
     var borrowedBookList = [];
 
@@ -19,11 +19,12 @@ function getBorrowedBookList(){
         }
 
         let borrowedBooks = {
-            user:{},
+            users:{},
             books: []
         };
 
-        borrowedBooks.user = user.getUserByID(item.userId);
+        borrowedBooks.users = user.getUserByID(item.userId);
+
         item.bookIds.forEach((bookId)=>{
             borrowedBooks.books.push(book.getBookById(bookId));
         });
@@ -34,13 +35,13 @@ function getBorrowedBookList(){
     return borrowedBookList;
 }
 
-
-function getborrowByID(userID){  
+function getborrowByID(userID){
+    let borrow = readfile.getData(borrowPath);  
     var borrowedBooks = [];
     for(var i=0; i < borrow.length; i++){
-        if(borrow[i].userid == userID){
+        if(borrow[i].userId == userID){
             for(var j = 0; j < borrow[i].bookIds.length; j++){
-                borrowedBooks.push(book.getBookById(borrow[i].bookIds[j]));
+                borrowedBooks.push(book.getBookById(borrow[i].bookIds[j]));            
             }
         }
     }
@@ -50,8 +51,11 @@ function getborrowByID(userID){
 
 function saveBorrowedBook (userID, bookID){
     // for borrowing book, user is expected to present user id and book id
-        var userExist = false;
-        var bookExist = false; 
+    let users = readfile.getData(userPath);
+    let books = readfile.getData(bookPath);
+    let borrow = readfile.getData(borrowPath);
+    var userExist = false;
+    var bookExist = false;
     //1. Verify the user exists        
     for (var i = 0; i < users.length; i++){
         if (users[i].id == userID){
@@ -64,7 +68,7 @@ function saveBorrowedBook (userID, bookID){
         };
     }
 
-    //2. Verify the book exists and get its quantity
+     //2. Verify the book exists and get its quantity
     let totalBookQuantity = 0;
     for (var i = 0; i < books.length; i++){
         if (books[i].id == bookID) {
@@ -72,6 +76,7 @@ function saveBorrowedBook (userID, bookID){
                 totalBookQuantity = books[i].quantity;
         }
     }
+  
     if (!bookExist){
         return {
             message: 'The requested book is not available.'
@@ -82,13 +87,13 @@ function saveBorrowedBook (userID, bookID){
     // get aleady rented copies
     let borrowedBookQuantity = 0; 
     for (var i = 0; i < borrow.length; i++){
-        for (var j = 0; j < borrow.bookID.length; j++){
-            if (borrow.bookID[j] == bookID){
+        for (var j = 0; j < borrow[i].bookIds.length; j++){
+            if (borrow[i].bookIds[j] == bookID){
             borrowedBookQuantity++;
             }
         }
+     }
 
-    }
     // get remaining copies
     var quantityRemaining = totalBookQuantity - borrowedBookQuantity;
     
@@ -97,33 +102,34 @@ function saveBorrowedBook (userID, bookID){
         // if user borrowed other book already, add book id to user borrow detail
         for(var i = 0; i < borrow.length; i++){
             if(borrow[i].userId == userID ){
-                borrow[i].bookId.push(bookID);
+                borrow[i].bookIds.push(bookID);
                 userExistInBorrowBook = true;
             }
         }
         // if user not yet borrowed a book, add user borrow detail
         if(!userExistInBorrowBook){
             var newBorrowedBook = {
-                "bookId": [bookID], 
+                "bookIds": [bookID], 
                 "userId": userID
             };
             borrow.push(newBorrowedBook);
         }
 
-        // write the borrowed book to the json file (overwrite)
-        fs.writeFileSync(borrowDataPath, JSON.stringify(borrow)); 
+         // write the borrowed book to the json file (overwrite)
+        fs.writeFileSync(borrowPath, JSON.stringify(borrow)); 
+
         return {
             message: 'The book is added successfuly.'
         }; 
     }
 
-    return {
+     return {
         message: 'User could not borrow the book.'
     };
 }
 
 module.exports = {
-    getBorrowedBookList: getBorrowedBookList,
     getborrowByID: getborrowByID,
+    getBorrowedBookList: getBorrowedBookList,
     saveBorrowedBook: saveBorrowedBook
 };
