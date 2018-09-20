@@ -1,19 +1,21 @@
 
 const fs = require('fs'); //The keyword require is used in Node.js to import modules.
 const readfile = require('./helper/readfile');
-const user = require('./users');
-const book = require('./book');
-const borrowPath = './src/data/borrows.json';
-const userPath = './src/data/users.json';
-const bookPath = './src/data/books.json'
 
-function getBorrowedBookList(){
-    let borrow = readfile.getData(borrowPath); 
+const userDataPath = './src/data/users.json';
+const bookDataPath = './src/data/books.json';
+const borrowDataPath = './src/data/borrows.json';
+
+let borrow = readfile.getData(borrowDataPath);  
+let books = readfile.getData(bookDataPath);
+let users = readfile.getData(userDataPath);
+
+function getBorrowedBookList(){ 
     var borrowedBookList = [];
 
     borrow.forEach((item)=>{
         if(!item || !item.userId || !item.bookIds){
-            //continue;
+            continue;
         }
 
         let borrowedBooks = {
@@ -21,9 +23,8 @@ function getBorrowedBookList(){
             books: []
         };
 
-        //const oneUser = user.getUserByID(item.userId);
-        //borrowedBooks.users = oneUser.userID;
         borrowedBooks.users = user.getUserByID(item.userId);
+
         item.bookIds.forEach((bookId)=>{
             borrowedBooks.books.push(book.getBookById(bookId));
         });
@@ -34,14 +35,14 @@ function getBorrowedBookList(){
     return borrowedBookList;
 }
 
-
 function getborrowByID(userID){
     let borrow = readfile.getData(borrowPath);  
     var borrowedBooks = [];
     for(var i=0; i < borrow.length; i++){
         if(borrow[i].userId == userID){
             for(var j = 0; j < borrow[i].bookIds.length; j++){
-                borrowedBooks.push(book.getBookById(borrow[i].bookIds[j]));            }
+                borrowedBooks.push(book.getBookById(borrow[i].bookIds[j]));            
+            }
         }
     }
     
@@ -55,7 +56,6 @@ function saveBorrowedBook (userID, bookID){
     let borrow = readfile.getData(borrowPath);
     var userExist = false;
     var bookExist = false;
-
     //1. Verify the user exists        
     for (var i = 0; i < users.length; i++){
         if (users[i].id == userID){
@@ -67,21 +67,22 @@ function saveBorrowedBook (userID, bookID){
             message: 'The user is not a member of the library'
         };
     }
+
      //2. Verify the book exists and get its quantity
     let totalBookQuantity = 0;
     for (var i = 0; i < books.length; i++){
         if (books[i].id == bookID) {
                 bookExist = true;
                 totalBookQuantity = books[i].quantity;
-                console.log(totalBookQuantity);
         }
     }
+  
     if (!bookExist){
         return {
             message: 'The requested book is not available.'
         };   
     }
-    
+
     //3. Verify if the library has extra copy to rent
     // get aleady rented copies
     let borrowedBookQuantity = 0; 
@@ -113,12 +114,15 @@ function saveBorrowedBook (userID, bookID){
             };
             borrow.push(newBorrowedBook);
         }
+
          // write the borrowed book to the json file (overwrite)
         fs.writeFileSync(borrowPath, JSON.stringify(borrow)); 
+
         return {
             message: 'The book is added successfuly.'
         }; 
     }
+
      return {
         message: 'User could not borrow the book.'
     };

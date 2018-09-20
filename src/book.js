@@ -91,7 +91,14 @@ function getbookSearchByTitle(title){
 
 function saveBook(book){
     books = readfile.getData(bookDataPath);
-    let exist = false; // flage
+    if (book == null || book == {} || !book || typeof book !== 'object' || !book.ISBN){
+        return {
+            message: 'The data should be object and have the required book fields.'
+        };
+
+    }
+    
+    let exist = false; // flag
 
     //Validate the user is already exist or not.
     for(let i=0; i< books.length; i++){
@@ -104,7 +111,7 @@ function saveBook(book){
  
     if(exist == true){
         return {
-            message: 'The book is already exist.'
+            message: 'The book already exists.'
         };
 
     }
@@ -112,7 +119,6 @@ function saveBook(book){
     book.id = uuidv1();
     books.push(book);
     fs.writeFileSync(bookDataPath, JSON.stringify(books));
-    console.log(book.id);
     
     return {
         id: book.id
@@ -142,6 +148,7 @@ function searchBookLastWithTitleName(title){
     }
     return detailbook;
 }
+    
 
 // module.exports is an object that the current module returns when it is "required" in another program or module.
 // it is like package 
